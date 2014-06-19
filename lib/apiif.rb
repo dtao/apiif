@@ -11,11 +11,9 @@ class Apiif::Server < Sinatra::Base
     File.read(path)
   end
 
-  get '/*' do
-    serve_file request.path_info, 'get'
-  end
-
-  post '/*' do
-    serve_file request.path_info, 'post'
+  ['get', 'put', 'post', 'delete'].each do |verb|
+    self.send verb, '/*' do
+      serve_file request.path_info, verb
+    end
   end
 end
