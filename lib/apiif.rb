@@ -1,8 +1,11 @@
 require 'apiif/version'
+require 'apiif/options'
 
 require 'sinatra'
 
 class Apiif::Server < Sinatra::Base
+  set :port, Apiif::OPTIONS[:port]
+
   def serve_file(path, verb)
     path = File.join('.', path, "#{verb}.json")
 
