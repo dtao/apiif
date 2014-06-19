@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'apiif'
+
+Apiif::Server.run!
