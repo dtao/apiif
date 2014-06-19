@@ -32,3 +32,9 @@ Once you've done that, navigate to the root of this directory tree you've just m
     apiif
 
 Now, [baby you've got a stew going](https://www.youtube.com/watch?v=Sr2PlqXw03Y).
+
+## Options
+
+To see available command-line options (such as `--port`), run:
+
+    apiif --help

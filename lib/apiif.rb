@@ -7,7 +7,7 @@ class Apiif::Server < Sinatra::Base
   set :port, Apiif::OPTIONS[:port]
 
   def serve_file(path, verb)
-    path = File.join('.', path, "#{verb}.json")
+    path = File.join(Apiif::OPTIONS[:root], path, "#{verb}.json")
 
     if !File.exists?(path)
       halt 405 if Dir.exists?(File.dirname(path))
