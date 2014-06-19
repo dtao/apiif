@@ -5,7 +5,11 @@ require 'sinatra'
 class Apiif::Server < Sinatra::Base
   def serve_file(path, verb)
     path = File.join('.', path, "#{verb}.json")
-    halt 404 if !File.exists?(path)
+
+    if !File.exists?(path)
+      halt 405 if Dir.exists?(File.dirname(path))
+      halt 404
+    end
 
     content_type :json
     File.read(path)
