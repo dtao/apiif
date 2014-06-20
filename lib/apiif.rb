@@ -18,6 +18,10 @@ class Apiif::Server < Sinatra::Base
     File.read(path)
   end
 
+  before do
+    headers 'Access-Control-Allow-Origin' => '*'
+  end
+
   ['get', 'put', 'post', 'delete'].each do |verb|
     self.send verb, '/*' do
       serve_file request.path_info, verb
